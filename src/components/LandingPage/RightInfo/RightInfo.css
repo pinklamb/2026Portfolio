@@ -1,0 +1,95 @@
+.hero-right {
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  
+  justify-content: flex-end; 
+
+  align-items: flex-end;
+  
+  padding: 40px 60px 60px 60px; 
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 600px;
+  height: 100%;
+
+  /* 3. NEW: Automatically forces the entire box to stick to the right side of the screen */
+  margin-left: auto;
+
+  /* Pulls the layout box up and shifts it slightly past edge padding */
+  margin-top: -160px;   
+  margin-right: 0px;  
+}
+
+
+
+
+
+
+/* Bottom metadata */
+.hero-metadata {
+  font-family: 'Courier New', Courier, monospace;
+  color: rgba(232, 227, 214, 0.55);
+  text-align: right;
+  line-height: 2;
+}
+
+.metadata-item {
+  display: block;
+  letter-spacing: 0.05em;
+}
+
+.metadata-label {
+  color: rgba(232, 227, 214, 0.45);
+}
+
+.metadata-value {
+  color: rgba(232, 227, 214, 0.75);
+}
+
+/* Scroll prompt with salmon accent */
+.metadata-scroll {
+  color: #e88a7a;
+  margin-top: 8px;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+
+  /* NEW: Forces text and image to line up side-by-side */
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Keeps alignment clinging to the right edge */
+  gap: 8px;                  /* Creates a small space between arrow and text */
+}
+
+/* NEW: Styles the raw icon so it isn't massive */
+.down-arrow {
+  width: 14px;        /* Limits width to closely match text heights */
+  height: 14px;       /* Keeps it perfectly square */
+  object-fit: contain;
+  /* Optional: filter to make a dark PNG match the salmon text color (#e88a7a) */
+  /* filter: invert(70%) sepia(35%) saturate(760%) hue-rotate(320deg) brightness(97%) contrast(90%); */
+}
+
+.metadata-scroll:hover {
+  opacity: 0.7;
+}
+
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .hero-right {
+    align-items: flex-start;
+    padding: 32px 20px 24px;
+    min-height: auto;
+  }
+
+ 
+  .hero-metadata {
+    text-align: left;
+  }
+
+  .metadata-scroll {
+    margin-top: 16px;
+  }
+}

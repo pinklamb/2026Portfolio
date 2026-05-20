@@ -1,0 +1,11 @@
+.landing-page {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden; /* Stops any rogue scrollbars */
+  display: flex;
+  flex-direction: column; /* Vertically orders Nav, Row, and Footer */
+  position: relative;
+}
+
+
+

@@ -1,0 +1,103 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 24px;
+  position: relative;
+  z-index: 10; 
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 15px;
+  
+  /* Removes the solid color background completely */
+  background: transparent; 
+  
+  /* Keeps the single skinny bottom underline */
+  border-bottom: 0.5px solid rgba(232, 227, 214, 0.25); 
+}
+
+.navbar-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-indicator {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #0c7a36; 
+  display: inline-block;
+  animation: ambientPulse 3s ease-in-out infinite;
+}
+
+@keyframes ambientPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;         
+    transform: scale(0.9); 
+  }
+}
+
+.status-text {
+  color: rgba(232, 227, 214, 0.75);
+}
+
+.navbar-links {
+  display: flex;
+  justify-content: center;
+  /* Removed the gap property to let paddings handle perfect centering */
+  gap: 0; 
+  color: rgba(232, 227, 214, 0.55);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  align-items: center;
+}
+
+.navbar-links a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  padding: 0 16px; 
+}
+
+.navbar-links a:hover {
+  color: #e88a7a; 
+}
+
+/* REMOVED the vertical border-right line property completely */
+.navbar-links a:not(:last-child) {
+  border-right: none; 
+}
+
+
+
+.navbar-version {
+  color: rgba(232, 227, 214, 0.5);
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px 20px;
+    align-items: flex-start;
+  }
+
+  .navbar-links {
+    position: static;
+    transform: none;
+    font-size: 10px;
+  }
+  
+  .navbar-links a {
+    padding: 0 8px 0 0;
+  }
+
+  .navbar-version {
+    align-self: flex-end;
+  }
+}

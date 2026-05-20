@@ -1,0 +1,95 @@
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+  /* Makes sure padding doesn't stretch screen height (bug I had) */
+  box-sizing: border-box; 
+  
+  
+  padding: 15em 100px 100px 60px; 
+  
+  height: 100%; 
+  
+  max-width: 600px;   
+  width: 100%;
+}
+
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+
+.hero-label {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 15px; 
+  letter-spacing: 0.2em;
+  color: rgba(232, 227, 214, 0.5);
+  margin-bottom: 24px; 
+  text-transform: uppercase;
+}
+
+.hero-name {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 100px; 
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: #f4efe0;
+  font-weight: 400;
+  margin: 0;
+}
+
+.hero-name .comma {
+  font-style: italic;
+  color: rgba(244, 239, 224, 0.7);
+}
+
+
+.hero-subtitle {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-size: 36px; 
+  color: #db6a57; 
+  margin: 16px 0 0 0; 
+  font-weight: 400;
+}
+
+/* Bio paragraph */
+.hero-bio {
+  font-size: 16px; 
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 100;
+  line-height: 1.7;
+  color: rgba(232, 227, 214, 0.85);
+  max-width: 480px; 
+  margin: 48px 0 0 0;
+}
+
+
+
+
+
+/* Mobile responsive resets */
+@media (max-width: 768px) {
+  .hero-left {
+    padding: 40px 24px;
+    min-height: auto;
+    max-width: 100%;
+  }
+
+  .hero-name {
+    font-size: 52px;
+  }
+
+  .hero-subtitle {
+    font-size: 26px;
+  }
+
+  .hero-bio {
+    max-width: 100%;
+    font-size: 15px;
+  }
+}
