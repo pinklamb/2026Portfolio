@@ -1,4 +1,4 @@
-export type ProjectStatus = 'deployed' | 'live' | 'building' | 'archived'
+export type ProjectStatus =   'live' | 'building' | 'archived'
 
 export interface ProjectLink {
   label: string
@@ -27,7 +27,7 @@ export const projects: Project[] = [
     titlePunctuation: '.',
     subtitle: 'a pipeline-risk engine that tells sales teams which deals are quietly dying.',
     year: '2026',
-    status: 'deployed',
+    status: 'live',
     description: 'FastAPI backend scoring every deal 0–100 on five behavioral rules — customer silence, stage stagnation, stale next steps, single threading, and slipped close dates. When a deal hits red, Pulse drafts a re-engagement email through Groq\'s Llama 3.3 endpoint, tuned on the deal\'s specific risk signals.',
     stack: ['FASTAPI | PYTHON 3.10', 'GROQ | LLAMA 3.3 70B', 'RAILWAY | DEPLOYMENT'],
     role: 'FULL-STACK | API DESIGN',
@@ -55,13 +55,12 @@ export const projects: Project[] = [
   },
   {
     number: '03',
-    title: 'Untitled,',
-    titlePunctuation: ' No. 03',
+    title: 'Futures Risk Analysis',
     subtitle: 'A financial Risk engine for futures contracts',
     year: '2026 — ONGOING',
     status: 'building',
-    description: 'A new project is in active development. Details will be posted here once it\'s ready to be seen. In the meantime, feel free to reach out for a preview, or follow along on GitHub.',
-    stack: ['IN PROGRESS'],
+    description: 'Decides whether a futures trade is worth taking by combining regime detection, signal scoring, and a similarity-based historical backtest into a single verdict.',
+    stack: ['PYTHON | REACT | FASTAPI'],
     role: 'LEAD DEVELOPER',
     links: [
       { label: 'FOLLOW ON GITHUB', url: 'https://github.com/pinklamb/FinTech', primary: true },

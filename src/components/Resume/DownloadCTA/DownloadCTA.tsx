@@ -7,7 +7,7 @@ export default function DownloadCTA() {
         Want the full résumé?
       </div>
       <a 
-        href="/public/documents/Resume.pdf" 
+        href="/documents/CL_RESUME_2026.pdf" 
         download
         className="download-button"
       >

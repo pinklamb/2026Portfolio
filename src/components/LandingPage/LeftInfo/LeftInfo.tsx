@@ -4,7 +4,7 @@ export default function LeftInfo() {
   return (
     <div className="hero-left">
       <div className="hero-text">
-        <div className="hero-label">PORTFOLIO / 2026 / EDITION III</div>
+        <div className="hero-label">PORTFOLIO / 2026 / EDITION II</div>
         
         <h1 className="hero-name">
           Chanelle<br/>
@@ -14,7 +14,7 @@ export default function LeftInfo() {
         <p className="hero-subtitle">software engineer.</p>
         
         <p className="hero-bio">
-          Aspiring Software Engineer | Full Stack
+          Software Engineer | Full Stack
           <br></br>
           I create secure, efficient, and user-friendly applications.
         </p>

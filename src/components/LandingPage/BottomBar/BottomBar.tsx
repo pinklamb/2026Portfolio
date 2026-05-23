@@ -6,7 +6,7 @@ export default function BottomBar() {
       <div className="bottom-bar-item">
         <div className="bottom-bar-label">LANG</div>
      
-        <div className="bottom-bar-value">REACT | PY | VUE | JAVA</div>
+        <div className="bottom-bar-value">C++ | C | PYTHON | VUE | JAVA | JS </div>
       </div>
 
       <div className="bottom-bar-item">
@@ -16,7 +16,7 @@ export default function BottomBar() {
 
       <div className="bottom-bar-item">
         <div className="bottom-bar-label">STATUS</div>
-        <div className="bottom-bar-value status-highlight">SHIPPING</div>
+        <div className="bottom-bar-value status-highlight">LOOKING FOR FULL TIME ROLES</div>
       </div>
 
       <div className="bottom-bar-item">
