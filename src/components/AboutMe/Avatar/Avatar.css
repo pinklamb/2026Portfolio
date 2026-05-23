@@ -1,0 +1,56 @@
+.about-avatar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  padding: clamp(28px, 5vw, 40px) clamp(20px, 4vw, 32px);
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* Salmon circle with monogram */
+.avatar-circle {
+  width: clamp(100px, 12vw, 140px);
+  height: clamp(100px, 12vw, 140px);
+  border-radius: 50%;
+  background: #e88a7a; /* Salmon accent */
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Subtle interaction on hover */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.avatar-circle:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 40px rgba(232, 138, 122, 0.25);
+}
+
+/* Monogram inside circle */
+.avatar-monogram {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(40px, 5vw, 56px);
+  color: #0b0a09; /* Dark, contrasts with salmon */
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-weight: 400;
+  user-select: none; /* Don't let users accidentally highlight it */
+}
+
+.monogram-period {
+  font-style: italic;
+}
+
+/* Caption below avatar */
+.avatar-caption {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: clamp(10px, 30vh, 10px);
+  font-weight: bold;
+  letter-spacing: 0.2em;
+  color: rgba(232, 227, 214, 0.5);
+  margin-top: clamp(12px, 1.5vw, 14px);
+  text-align: center;
+  text-transform: uppercase;
+}

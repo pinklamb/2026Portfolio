@@ -1,21 +1,41 @@
-import './Navbar.css'
+import { useState } from 'react'
+import './NavBar.css'
 
 export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false)
+
   return (
     <nav className="navbar">
+      {/* Left side: Status */}
       <div className="navbar-status">
-        <span className="status-indicator" aria-label="Available for work"></span>
-        <span className="status-text">cl.dev / available for work</span>
+        <span className="status-indicator"></span>
+        <span className="status-text">AVAILABLE FOR WORK</span>
       </div>
 
-      <div className="navbar-links">
-        <a href="#work">Projects</a>
-        <a href="#about">About</a>
-        <a href="#writing">Resume</a>
-        <a href="#contact">Contact</a>
+      {/* Hamburger Toggle Button (Hidden on Desktop) */}
+      <button 
+        className={`navbar-toggle ${isOpen ? 'is-active' : ''}`} 
+        onClick={() => setIsOpen(!isOpen)}
+        aria-label="Toggle navigation menu"
+      >
+        <span className="hamburger-line"></span>
+        <span className="hamburger-line"></span>
+        <span className="hamburger-line"></span>
+      </button>
+
+
+      <div className={`navbar-links ${isOpen ? 'is-open' : ''}`}>
+        <a href="#about" onClick={() => setIsOpen(false)}>ABOUT</a>
+        <a href="#projects" onClick={() => setIsOpen(false)}>PROJECTS</a>
+        
+        <a href="#resume" onClick={() => setIsOpen(false)}>RESUME</a>
+        <a href="#contact" onClick={() => setIsOpen(false)}>CONTACT</a>
       </div>
 
-      <div className="navbar-version">v3.0.1</div>
+      
+      <div className={`navbar-version ${isOpen ? 'is-open' : ''}`}>
+      </div>
     </nav>
   )
 }
+

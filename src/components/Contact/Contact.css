@@ -1,0 +1,13 @@
+.contact {
+  width: 100%;
+  background: #0b0a09;
+  color: #e8e3d6;
+  position: relative;
+  
+  max-width: 1600px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  
+
+  scroll-margin-top: 80px;
+}

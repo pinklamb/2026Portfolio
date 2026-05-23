@@ -1,0 +1,66 @@
+.resume-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  
+  padding: clamp(32px, 5vw, 48px) clamp(20px, 4vw, 32px) clamp(16px, 2.5vw, 24px);
+  border-bottom: 0.5px solid rgba(232, 227, 214, 0.12);
+  
+  box-sizing: border-box;
+  width: 100%;
+  gap: 24px;
+}
+
+/* Left: chapter label + title */
+.resume-header-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.resume-header-label {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: clamp(16px, 1vw, 11px);
+  letter-spacing: 0.2em;
+  color: rgba(232, 227, 214, 0.5);
+  margin-bottom: clamp(8px, 1.5vw, 12px);
+  text-transform: uppercase;
+}
+
+.resume-header-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(32px, 5vw, 44px);
+  line-height: 1;
+  letter-spacing: -0.015em;
+  color: #f4efe0;
+  font-weight: 400;
+  margin: 0;
+}
+
+.title-italic {
+  font-style: italic;
+  color: #e88a7a;
+}
+
+
+.resume-header-meta {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: clamp(12px, 1vw, 10px);
+  color: rgba(232, 227, 214, 0.5);
+  text-align: right;
+  line-height: 1.9;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+/* Mobile - stack metadata under title */
+@media (max-width: 600px) {
+  .resume-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .resume-header-meta {
+    text-align: left;
+  }
+}

@@ -1,0 +1,92 @@
+.education {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.education-label {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: clamp(14px, 1vw, 12px);
+  font-weight: bold;
+  letter-spacing: 0.2em;
+  color: #e88a7a;
+  margin-bottom: clamp(16px, 2vw, 18px);
+  margin-top:  clamp(16px, 2vw, 18px);
+  text-transform: uppercase;
+}
+
+
+.education-degree {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(34px, 3.2vw, 37px);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: #f4efe0;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.degree-italic {
+  font-style: italic;
+}
+
+.education-school {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(28px, 1.8vw, 28px);
+  color: rgba(232, 227, 214, 0.75);
+  margin-bottom: clamp(20px, 3vw, 28px);
+}
+
+/* (COURSEWORK, CERTIFICATIONS) */
+.education-sublabel {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: clamp(13px, 1vw, 18px);
+  letter-spacing: 0.15em;
+  color: rgba(232, 227, 214, 0.5);
+  margin-bottom: 10px;
+  margin-top: clamp(20px, 2.5vw, 24px);
+  text-transform: uppercase;
+}
+
+/* First sublabel shouldn't have top margin */
+.education-sublabel:first-of-type {
+  margin-top: 0;
+}
+
+
+.education-coursework {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: clamp(16px, 1.2vw, 13px);
+  font-weight: bold;
+  line-height: 1.9;
+  color: rgba(232, 227, 214, 0.78);
+}
+
+
+.education-certs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cert-item {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: clamp(15px, 1.2vw, 17px);
+  line-height: 1.5;
+  flex-wrap: wrap;
+}
+
+.cert-name {
+  color: rgba(232, 227, 214, 0.85);
+}
+
+.cert-level {
+  color: #e88a7a;
+  font-size: clamp(12px, 1vw, 11px);
+  font-weight: bolder;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}

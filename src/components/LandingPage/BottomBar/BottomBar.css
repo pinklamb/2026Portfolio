@@ -12,7 +12,6 @@
 }
 
 .bottom-bar-item {
-  /* Increased layout padding from 12px to 18px to make the bar physically larger */
   padding: 18px 24px;
   border-right: 0.5px solid rgba(232, 227, 214, 0.25);
   display: flex;
@@ -26,7 +25,6 @@
 
 .bottom-bar-label {
   color: rgba(232, 227, 214, 0.45);
-  /* Scaled label up from 10px to 12px */
   font-size: 12px;
   letter-spacing: 0.12em;
   margin-bottom: 6px;
@@ -35,13 +33,11 @@
 
 .bottom-bar-value {
   color: rgba(232, 227, 214, 0.85);
-  /* Scaled value up from 10px to 14px */
   font-size: 14px;
   letter-spacing: 0.05em;
   font-weight: 500;
 }
 
-/* Specific styling modifier to make the 2026 Year text explicitly larger */
 .bottom-bar-item:last-child .bottom-bar-value {
   font-size: 18px; 
   font-weight: bold;
@@ -52,14 +48,19 @@
   color: #e88a7a;
 }
 
+/* Mobile Changes */
 @media (max-width: 768px) {
   .bottom-bar {
     grid-template-columns: repeat(2, 1fr);
+    /* Enforces explicit sizing on the grid rows */
+    grid-auto-rows: minmax(55px, auto); 
     position: fixed;
+    /* Adds a solid background on mobile so overlapping background text stays unreadable behind it */
+    background: #000000; 
   }
 
   .bottom-bar-item {
-    padding: 14px 18px;
+    padding: 12px 16px;
   }
 
   .bottom-bar-item:nth-child(2),
@@ -74,6 +75,7 @@
   
   .bottom-bar-label {
     font-size: 10px;
+    margin-bottom: 2px;
   }
   
   .bottom-bar-value {
@@ -84,4 +86,5 @@
     font-size: 13px;
   }
 }
+
 

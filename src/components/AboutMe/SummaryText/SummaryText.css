@@ -1,0 +1,70 @@
+.summary-text {
+  width: 100%;
+  max-width: 720px; 
+  margin: 0 auto;
+  
+  padding: clamp(16px, 2vw, 24px) clamp(20px, 4vw, 32px) clamp(32px, 5vw, 48px);
+  box-sizing: border-box;
+}
+
+
+.summary-section {
+  margin-bottom: clamp(28px, 4vw, 36px);
+}
+
+.summary-section:last-child {
+  margin-bottom: 0;
+}
+
+
+.summary-label {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bolder;
+  font-size: clamp(16px, 1vw, 10px);
+  letter-spacing: 0.1em;
+  color: #e88a7a; 
+  margin-bottom: clamp(10px, 1.5vw, 12px);
+  text-transform: uppercase;
+}
+
+
+.summary-paragraph {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: clamp(18px, 1.3vw, 15px);
+  font-weight: bold;
+  line-height: 1.7;
+  color: rgba(232, 227, 214, 0.85);
+  margin: 0;
+  font-weight: 300;
+}
+
+
+.summary-lead {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(18px, 2vw, 22px);
+  line-height: 1.4;
+  color: #f4efe0;
+  font-weight: 400;
+}
+
+
+.drop-cap {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(46px, 4vw, 42px);
+  line-height: 0.85;
+  float: left;
+  margin: 4px 8px 0 0;
+  color: #e88a7a;
+  font-weight: 400;
+}
+
+
+@media (max-width: 600px) {
+  .summary-text {
+    max-width: 100%;
+  }
+
+  .summary-section {
+    margin-bottom: 28px;
+  }
+}

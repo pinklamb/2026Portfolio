@@ -1,0 +1,68 @@
+.stack {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Section label - salmon mono caps */
+.stack-label {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: clamp(15px, 1vw, 15px);
+  letter-spacing: 0.2em;
+  color: #e88a7a;
+  margin-bottom: clamp(14px, 2vw, 18px);
+  text-transform: uppercase;
+}
+
+
+.stack-category {
+  margin-bottom: clamp(18px, 2.5vw, 22px);
+}
+
+.stack-sublabel {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: clamp(17px, 1vw, 10px);
+  letter-spacing: 0.15em;
+  color: rgba(232, 227, 214, 0.45);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+
+.stack-list {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(15px, 1.4vw, 15px);
+  
+  color: #f4efe0;
+  line-height: 1.7;
+}
+
+
+.stack-interested {
+  margin-top: clamp(20px, 3vw, 28px);
+  padding-top: clamp(16px, 2.5vw, 20px);
+  border-top: 0.5px solid rgba(232, 227, 214, 0.12);
+}
+
+.interested-label {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: clamp(15px, 1vw, 10px);
+  letter-spacing: 0.2em;
+  color: rgba(232, 227, 214, 0.5);
+  margin-bottom: 18px;
+  text-transform: uppercase;
+}
+
+.interested-text {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-size: clamp(21px, 1.8vw, 18px);
+  color: rgba(232, 227, 214, 0.85);
+  line-height: 1.8;
+}
+
+
+.interested-accent {
+  color: #e88a7a;
+  font-style: normal;
+  font-weight: 500;
+}

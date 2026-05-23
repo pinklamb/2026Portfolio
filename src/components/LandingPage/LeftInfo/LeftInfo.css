@@ -2,19 +2,15 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  
-  /* Makes sure padding doesn't stretch screen height (bug I had) */
   box-sizing: border-box; 
   
   
-  padding: 15em 100px 100px 60px; 
+  padding: clamp(6em, 12vw, 15em) clamp(30px, 6vw, 100px) clamp(40px, 8vw, 100px) clamp(20px, 4vw, 60px); 
   
   height: 100%; 
-  
   max-width: 600px;   
   width: 100%;
 }
-
 
 .hero-text {
   display: flex;
@@ -22,19 +18,18 @@
   gap: 0;
 }
 
-
 .hero-label {
   font-family: 'Courier New', Courier, monospace;
-  font-size: 15px; 
+  font-size: clamp(11px, 1.2vw, 15px); 
   letter-spacing: 0.2em;
   color: rgba(232, 227, 214, 0.5);
-  margin-bottom: 24px; 
+  margin-bottom: clamp(16px, 2vw, 24px); 
   text-transform: uppercase;
 }
 
 .hero-name {
   font-family: Georgia, 'Times New Roman', serif;
-  font-size: 100px; 
+  font-size: clamp(48px, 8vw, 100px); 
   line-height: 0.95;
   letter-spacing: -0.02em;
   color: #f4efe0;
@@ -47,49 +42,33 @@
   color: rgba(244, 239, 224, 0.7);
 }
 
-
 .hero-subtitle {
   font-family: Georgia, 'Times New Roman', serif;
   font-style: italic;
-  font-size: 36px; 
-  color: #db6a57; 
-  margin: 16px 0 0 0; 
+  font-size: clamp(20px, 3vw, 36px); 
+  color: #e88a7a;; 
+  margin: clamp(8px, 1.5vw, 16px) 0 0 0; 
   font-weight: 400;
 }
 
-/* Bio paragraph */
 .hero-bio {
-  font-size: 16px; 
+  font-size: clamp(13px, 1.3vw, 16px); 
   font-family: 'Courier New', Courier, monospace;
   font-weight: 100;
   line-height: 1.7;
   color: rgba(232, 227, 214, 0.85);
   max-width: 480px; 
-  margin: 48px 0 0 0;
+  margin: clamp(24px, 4vw, 48px) 0 0 0;
 }
 
 
-
-
-
-/* Mobile responsive resets */
-@media (max-width: 768px) {
+@media (max-width: 780px) {
   .hero-left {
-    padding: 40px 24px;
-    min-height: auto;
+    padding: 4em 20px 40px 20px;
     max-width: 100%;
-  }
-
-  .hero-name {
-    font-size: 52px;
-  }
-
-  .hero-subtitle {
-    font-size: 26px;
   }
 
   .hero-bio {
     max-width: 100%;
-    font-size: 15px;
   }
 }

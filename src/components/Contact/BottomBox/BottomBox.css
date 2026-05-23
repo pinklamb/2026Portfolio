@@ -1,0 +1,72 @@
+.contact-bottom-links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 0.5px solid rgba(232, 227, 214, 0.15);
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 10px;
+  width: 100%;
+}
+
+/* Individual link cell */
+.bottom-link {
+  padding: clamp(14px, 2.5vw, 18px) clamp(16px, 3vw, 24px);
+  border-right: 0.5px solid rgba(232, 227, 214, 0.15);
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.bottom-link:last-child {
+  border-right: none;
+}
+
+.bottom-link:hover {
+  background: rgba(232, 138, 122, 0.04);
+}
+
+/* Small label above */
+.link-label {
+  color: rgba(232, 227, 214, 0.45);
+  letter-spacing: 0.12em;
+  margin-bottom: 6px;
+  font-size: clamp(9px, 1vw, 10px);
+}
+
+/* Main link text */
+.link-value {
+  color: rgba(232, 227, 214, 0.85);
+  font-size: clamp(13px, 1.4vw, 14px);
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+/* Primary link (Email) - salmon */
+.bottom-link-primary .link-value {
+  color: #e88a7a;
+}
+
+/* Mobile - stack to two rows */
+@media (max-width: 600px) {
+  .contact-bottom-links {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .bottom-link:nth-child(2) {
+    border-right: none;
+  }
+
+  .bottom-link:nth-child(1),
+  .bottom-link:nth-child(2) {
+    border-bottom: 0.5px solid rgba(232, 227, 214, 0.15);
+  }
+
+  .bottom-link:last-child {
+    grid-column: span 2;
+    border-bottom: none;
+  }
+}

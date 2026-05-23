@@ -1,114 +1,123 @@
-import { useState } from 'react' 
-import { P5CanvasInstance, P5Canvas } from '@p5-wrapper/react'
+import { useEffect, useRef } from 'react'
+import * as THREE from 'three'
+import { AsciiEffect } from 'three/addons/effects/AsciiEffect.js'
 import './Background.css'
 
 export default function Background() {
-  const [isReady, setIsReady] = useState(false) 
+  const containerRef = useRef<HTMLDivElement | null>(null)
 
-  const sketch = (p: P5CanvasInstance) => {
-    let finger: any
+  useEffect(() => {
+    const container = containerRef.current
+    if (!container) return
+
+    const start = Date.now()
+    const scene = new THREE.Scene()
+    scene.background = new THREE.Color(0x000000)
+
+    const camera = new THREE.PerspectiveCamera(
+      70,
+      container.clientWidth / container.clientHeight,
+      1,
+      1000
+    )
+    camera.position.y = 0 
+    camera.position.z = 500
+    camera.lookAt(0, 0, 0) 
+
+    // Lights
+    const pointLight1 = new THREE.PointLight(0xffffff, 3, 0, 0)
+    pointLight1.position.set(500, 500, 500)
+    scene.add(pointLight1)
+
+    const pointLight2 = new THREE.PointLight(0xffffff, 1, 0, 0)
+    pointLight2.position.set(-500, -500, -500)
+    scene.add(pointLight2)
+
+    // Sphere
+    const sphere = new THREE.Mesh(
+      new THREE.SphereGeometry(150, 40, 20), 
+      new THREE.MeshPhongMaterial({ flatShading: true })
+    )
+    scene.add(sphere)
+
+    // Renderer
+    const renderer = new THREE.WebGLRenderer()
+    renderer.setSize(container.clientWidth, container.clientHeight)
+
+    // ASCII Effect
+    const effect = new AsciiEffect(renderer, '    .:-+*=%@#', { invert: true })
+    effect.setSize(container.clientWidth, container.clientHeight)
+    effect.domElement.style.color = '#e88a7a'
+    effect.domElement.style.backgroundColor = 'transparent'
+    container.appendChild(effect.domElement)
+
+  
+    let mouseX = 0
+    let mouseY = 0
+    let targetX = 0
+    let targetY = 0
+
+    const onMouseMove = (event: MouseEvent) => {
+      targetX = (event.clientX / window.innerWidth) * 2 - 1
+      
+      const rawY = -(event.clientY / window.innerHeight) * 2 + 1
+      // Capped at -0.3 because it kept going past Navbar
+      targetY = Math.min(rawY, -0.3) 
+    }
+
+    window.addEventListener('mousemove', onMouseMove)
+
+    // Animation loop
+    const animate = () => {
+      const timer = Date.now() - start
+
+      mouseX += (targetX - mouseX) * 0.1
+      mouseY += (targetY - mouseY) * 0.1
+
+      // Bouncing
+      sphere.position.x = mouseX * 200
+      sphere.position.y = 30 + mouseY * 120 + Math.abs(Math.sin(timer * 0.002)) * 100
+
+      sphere.rotation.x = timer * 0.0003 + mouseY * 0.5
+      sphere.rotation.z = timer * 0.0002 + mouseX * 0.5
+
+      effect.render(scene, camera)
+    }
+
+    renderer.setAnimationLoop(animate)
+
     
-    // high density
-    const asciiChars = '                                 `.-_:\',^=;><+!rc*z"ls7698543210?!abcdeghijklmnopqrstuVXYZ#@$%'
-    
-    const gridX = 9  
-    const gridY = 4 
-
-    const hand = { 
-      x: 0, 
-      y: -950,     
-      speed: 5.0,
-      scale: 2.0  
+    const onResize = () => {
+      const width = container.clientWidth
+      const height = container.clientHeight
+      camera.aspect = width / height
+      camera.updateProjectionMatrix()
+      renderer.setSize(width, height)
+      effect.setSize(width, height)
     }
 
-    p.setup = async () => {
-      p.createCanvas(p.windowWidth, p.windowHeight)
-      finger = await p.loadImage('/finger.jpg')
+    window.addEventListener('resize', onResize)
 
-      const targetWidth = finger.width
-      const aspectRatio = finger.height / finger.width
-      const targetHeight = Math.floor(targetWidth * aspectRatio)
-      finger.resize(targetWidth, targetHeight)
-
-      p.textFont('Courier New')
-      p.textSize(gridY) 
-      p.textAlign(p.CENTER, p.CENTER)
-      p.noStroke()
-
-      setIsReady(true) 
-    }
-
-    p.draw = () => {
-      if (!finger) return
-
-      p.background(0) 
-      finger.loadPixels()
-
-      // Moves the hand across the screen 
-      hand.x += hand.speed
-
-      // Reset to the left side when it fully exits the right edge
-      const displayWidth = finger.width * hand.scale
-      const displayHeight = finger.height * hand.scale
-      if (hand.x > p.width) {
-        hand.x = -displayWidth 
-      }
-
-      // Calculate center and width bounds for the arm
-      const handCenterX = hand.x + (displayWidth / 2)
-      const armWidth = displayWidth * 0.65 // Adjusted to look like a wrist/arm width
-
-      // 2. Loop through the fixed screen grid
-      for (let y = 0; y < p.height; y += gridY) {
-        for (let x = 0; x < p.width; x += gridX) {
-          
-          let finalChar = ' ' 
-
-          // 3. Check if this specific grid pixel is inside the hand's boundaries
-          if (x >= hand.x && x < hand.x + displayWidth && y >= hand.y && y < hand.y + displayHeight) {
-            
-            // Map screen coordinate back to original image coordinates
-            let imgX = Math.floor(p.map(x - hand.x, 0, displayWidth, 0, finger.width - 1))
-            let imgY = Math.floor(p.map(y - hand.y, 0, displayHeight, 0, finger.height - 1))
-
-            imgX = p.constrain(imgX, 0, finger.width - 1)
-            imgY = p.constrain(imgY, 0, finger.height - 1)
-
-            const pixelIndex = (imgX + imgY * finger.width) * 4
-            const r = finger.pixels[pixelIndex + 0]
-            const g = finger.pixels[pixelIndex + 1]
-            const b = finger.pixels[pixelIndex + 2]
-            const avg = (r + g + b) / 3
-
-            const charIndex = Math.floor(p.map(avg, 0, 255, 0, asciiChars.length - 1))
-            finalChar = asciiChars[charIndex]
-          }
-          // 4. NEW: If below the hand image, draw the vertical arm cylinder
-          else if (y >= hand.y + displayHeight && x >= handCenterX - (armWidth / 2) && x <= handCenterX + (armWidth / 2)) {
-            
-            // Generates an organic noise pattern so the arm has texture like the hand
-            const noiseVal = p.noise(x * 0.04, y * 0.04)
-            // Maps the noise values to ASCII density characters
-            const charIndex = Math.floor(p.map(noiseVal, 0, 1, 15, asciiChars.length - 15))
-            finalChar = asciiChars[charIndex]
-          }
-
-          // 5. Render the character if it isn't an empty space
-          if (finalChar && finalChar.trim() !== '') {
-            p.fill(233, 150, 122) 
-            p.text(finalChar, x, y)
-          }
-        }
+    // Cleaning up everything
+    return () => {
+      renderer.setAnimationLoop(null)
+      window.removeEventListener('resize', onResize)
+      window.removeEventListener('mousemove', onMouseMove)
+      renderer.dispose()
+      sphere.geometry.dispose()
+      ;(sphere.material as THREE.Material).dispose()
+      if (effect.domElement.parentNode === container) {
+        container.removeChild(effect.domElement)
       }
     }
-  }
+  }, [])
 
-  return (
-    <div className={`background ${isReady ? 'is-ready' : ''}`} aria-hidden="true">
-      <P5Canvas sketch={sketch} />
-    </div>
-  )
+  return <div ref={containerRef} className="background" aria-hidden="true" />
 }
+
+
+
+
 
 
 

@@ -1,0 +1,219 @@
+.project-card {
+  padding: clamp(32px, 5vw, 48px) clamp(20px, 4vw, 32px);
+  border-bottom: 0.5px solid rgba(232, 227, 214, 0.12);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.project-card:last-child {
+  border-bottom: none;
+}
+
+
+.project-card-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: clamp(12px, 2vw, 16px);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.project-card-meta-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.project-card-number {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: clamp(17px, 1vw, 11px);
+  letter-spacing: 0.15em;
+  color: #e88a7a;
+}
+
+
+.project-card-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: clamp(15px, 1vw, 10px);
+  font-weight: bold;
+  padding: 3px 24px;
+  border-radius: 2px;
+  letter-spacing: 0.05em;
+}
+
+.status-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+
+
+.status-active {
+  border: 0.5px solid rgba(155, 191, 122, 0.4);
+  color: #9bbf7a;
+}
+.status-active .status-dot {
+  background: #9bbf7a;
+}
+
+.status-building {
+  border: 0.5px solid rgba(212, 168, 90, 0.4);
+  color: #d4a85a;
+}
+.status-building .status-dot {
+  background: #d4a85a;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+.status-archived {
+  border: 0.5px solid rgba(232, 227, 214, 0.3);
+  color: rgba(232, 227, 214, 0.5);
+}
+.status-archived .status-dot {
+  background: rgba(232, 227, 214, 0.5);
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.project-card-year {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: clamp(16px, 1vw, 10px);
+  color: rgba(232, 227, 214, 0.5);
+  letter-spacing: 0.05em;
+}
+
+
+.project-card-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(40px, 6vw, 56px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: #f4efe0;
+  margin: 0 0 clamp(6px, 1vw, 8px) 0;
+  font-weight: 400;
+}
+
+.title-punctuation {
+  font-style: italic;
+  color: rgba(244, 239, 224, 0.7);
+}
+
+
+.project-card-subtitle {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-size: clamp(19px, 1.8vw, 18px);
+  color: rgba(232, 227, 214, 0.7);
+  margin: 0 0 clamp(16px, 2.5vw, 24px) 0;
+  max-width: 480px;
+  font-weight: 400;
+}
+
+/* Description */
+.project-card-description {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: clamp(17px, 1.2vw, 16px);
+ 
+  line-height: 1.4;
+  color: rgba(232, 227, 214, 0.82);
+  margin: 0 0 clamp(20px, 3vw, 28px) 0;
+  max-width: 720px;
+  font-weight: 300;
+}
+
+/* Tech stack + role */
+.project-card-tech {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(16px, 3vw, 32px);
+  margin-bottom: clamp(20px, 3vw, 28px);
+  max-width: 720px;
+}
+
+.tech-block {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: clamp(13px, 1vw, 10px);
+  line-height: 1.6;
+  letter-spacing: 0.05em;
+}
+
+.tech-label {
+  color: rgba(232, 227, 214, 0.4);
+  margin-bottom: 4px;
+}
+
+.tech-value {
+  color: rgba(232, 227, 214, 0.65);
+}
+
+
+.project-card-links {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.project-link-pill {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: clamp(13px, 1vw, 11px);
+  padding: 9px 12px;
+  border: 0.5px solid rgba(232, 227, 214, 0.25);
+  border-radius: 2px;
+  color: rgba(232, 227, 214, 0.75);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.project-link-pill:hover {
+  border-color: rgba(232, 227, 214, 0.5);
+  color: #f4efe0;
+}
+
+
+.pill-primary {
+  border-color: #e88a7a;
+  color: #e88a7a;
+}
+
+.pill-primary:hover {
+  background: rgba(232, 138, 122, 0.1);
+  border-color: #e88a7a;
+  color: #e88a7a;
+}
+
+
+.project-card-building .project-card-title {
+  color: rgba(244, 239, 224, 0.55);
+  font-style: italic;
+}
+
+.project-card-building .project-card-subtitle {
+  color: rgba(232, 227, 214, 0.5);
+}
+
+.project-card-building .project-card-description {
+  color: rgba(232, 227, 214, 0.65);
+}
+
+@media (max-width: 600px) {
+  .project-card-tech {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .project-card-meta-row {
+    gap: 8px;
+  }
+}

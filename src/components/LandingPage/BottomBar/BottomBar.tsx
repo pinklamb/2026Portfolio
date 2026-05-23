@@ -5,8 +5,8 @@ export default function BottomBar() {
     <div className="bottom-bar">
       <div className="bottom-bar-item">
         <div className="bottom-bar-label">LANG</div>
-        {/* Added requested languages */}
-        <div className="bottom-bar-value">REACT · PY · VUE · JAVA</div>
+     
+        <div className="bottom-bar-value">REACT | PY | VUE | JAVA</div>
       </div>
 
       <div className="bottom-bar-item">

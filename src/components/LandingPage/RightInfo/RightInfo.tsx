@@ -1,6 +1,13 @@
 import './RightInfo.css'
 
 export default function RightInfo() {
+  const scrollToProjects = () => {
+    const projectsSection = document.getElementById('projects')
+    if (projectsSection) {
+      projectsSection.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   return (
     <div className="hero-right">
       <div className="hero-metadata">
@@ -8,9 +15,8 @@ export default function RightInfo() {
           <span className="metadata-label">BASED IN — </span>
           <span className="metadata-value">WASHINGTON, D.C.</span>
         </div>
-        <div className="metadata-scroll">
-          {/* Changed src path to reference the public root correctly */}
-          <img src="/down-arrow.png" className='down-arrow' alt="Scroll Indicator" />
+        <div className="metadata-scroll" onClick={scrollToProjects}>
+          <img src="img/down-arrow.png" className='down-arrow' alt="Scroll Indicator" />
           SCROLL TO COLLECTION
         </div>
       </div>
