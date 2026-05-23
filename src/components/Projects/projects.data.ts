@@ -33,7 +33,7 @@ export const projects: Project[] = [
     role: 'FULL-STACK | API DESIGN',
     links: [
       { label: 'LIVE DEMO', url: 'https://pulse-frontend-production-20c1.up.railway.app/', primary: true },
-      { label: 'API DOCS', url: '/public/documents/pulse_api_docs.pdf' },
+      { label: 'API DOCS', url: 'https://drive.google.com/file/d/1dfdbsvR1v70ebQo8HiAsUxXmF0Dzt-Du/view?usp=drive_link' },
       { label: 'SLIDES', url: 'https://canva.link/24wl110s9ytsx8i' },
       { label: 'GITHUB', url: 'https://github.com/pinklamb/Pulse-backend' },
     ],
