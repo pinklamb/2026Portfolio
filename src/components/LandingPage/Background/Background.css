@@ -16,6 +16,21 @@
   display: block;
 }
 
+.background-hotspot {
+  display: none;
+}
 
+@media (max-width: 780px) {
+  .background-hotspot {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 140px;
+    height: 200px;
+    pointer-events: auto;  /* overrides parent's "none" */
+    cursor: pointer;
+  }
+}
 
 

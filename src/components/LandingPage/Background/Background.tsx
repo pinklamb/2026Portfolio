@@ -10,6 +10,9 @@ export default function Background() {
     const container = containerRef.current
     if (!container) return
 
+    
+    const isMobile = () => window.innerWidth < 780
+
     const start = Date.now()
     const scene = new THREE.Scene()
     scene.background = new THREE.Color(0x000000)
@@ -38,6 +41,9 @@ export default function Background() {
       new THREE.SphereGeometry(150, 40, 20), 
       new THREE.MeshPhongMaterial({ flatShading: true })
     )
+  
+    // 0.40 keeps enough ASCII characters across the diameter so it still looks sort of round
+    sphere.scale.setScalar(isMobile() ? 0.40 : 1)
     scene.add(sphere)
 
     // Renderer
@@ -62,7 +68,7 @@ export default function Background() {
       
       const rawY = -(event.clientY / window.innerHeight) * 2 + 1
       // Capped at -0.3 because it kept going past Navbar
-      targetY = Math.min(rawY, -0.3) 
+      targetY = Math.min(rawY, -0.2) 
     }
 
     window.addEventListener('mousemove', onMouseMove)
@@ -74,12 +80,19 @@ export default function Background() {
       mouseX += (targetX - mouseX) * 0.1
       mouseY += (targetY - mouseY) * 0.1
 
-      // Bouncing
-      sphere.position.x = mouseX * 200
-      sphere.position.y = 30 + mouseY * 120 + Math.abs(Math.sin(timer * 0.002)) * 100
-
-      sphere.rotation.x = timer * 0.0003 + mouseY * 0.5
-      sphere.rotation.z = timer * 0.0002 + mouseX * 0.5
+      if (isMobile()) {
+        
+        sphere.position.x = 140
+        sphere.position.y = 200 + Math.abs(Math.sin(timer * 0.002)) * 25
+        sphere.rotation.x = timer * 0.0003
+        sphere.rotation.z = timer * 0.0002
+      } else {
+        
+        sphere.position.x = mouseX * 200
+        sphere.position.y = 30 + mouseY * 120 + Math.abs(Math.sin(timer * 0.002)) * 100
+        sphere.rotation.x = timer * 0.0003 + mouseY * 0.5
+        sphere.rotation.z = timer * 0.0002 + mouseX * 0.5
+      }
 
       effect.render(scene, camera)
     }
@@ -94,6 +107,8 @@ export default function Background() {
       camera.updateProjectionMatrix()
       renderer.setSize(width, height)
       effect.setSize(width, height)
+      // Re-apply scale so rotating the device or resizing swaps modes cleanly
+      sphere.scale.setScalar(isMobile() ? 0.40 : 1)
     }
 
     window.addEventListener('resize', onResize)
@@ -112,7 +127,11 @@ export default function Background() {
     }
   }, [])
 
-  return <div ref={containerRef} className="background" aria-hidden="true" />
+  return (
+    <div ref={containerRef} className="background" aria-hidden="true">
+      <div className="background-hotspot" />
+    </div>
+  )
 }
 
 
