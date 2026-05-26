@@ -24,7 +24,7 @@ export default function Background() {
       1000
     )
     camera.position.y = 0 
-    camera.position.z = 700
+    camera.position.z = 600
     camera.lookAt(0, 0, 0) 
 
     // Lights
@@ -43,7 +43,7 @@ export default function Background() {
     )
   
     // 0.40 keeps enough ASCII characters across the diameter so it still looks sort of round
-    sphere.scale.setScalar(isMobile() ? 0.75 : 1)
+    sphere.scale.setScalar(isMobile() ? 0.40 : 1)
     scene.add(sphere)
 
     // Renderer
