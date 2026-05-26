@@ -24,7 +24,7 @@ export default function Background() {
       1000
     )
     camera.position.y = 0 
-    camera.position.z = 600
+    camera.position.z = 500
     camera.lookAt(0, 0, 0) 
 
     // Lights
@@ -68,7 +68,7 @@ export default function Background() {
       
       const rawY = -(event.clientY / window.innerHeight) * 2 + 1
       // Capped at -0.3 because it kept going past Navbar
-      targetY = Math.min(rawY, -0.2) 
+      targetY = Math.min(rawY, -0.1) 
     }
 
     window.addEventListener('mousemove', onMouseMove)
@@ -82,8 +82,8 @@ export default function Background() {
 
       if (isMobile()) {
         
-        sphere.position.x = 140
-        sphere.position.y = 200 + Math.abs(Math.sin(timer * 0.003)) * 30
+        sphere.position.x = 100
+        sphere.position.y = 180 + Math.abs(Math.sin(timer * 0.003)) * 20
         sphere.rotation.x = timer * 0.0002
         sphere.rotation.z = timer * 0.0002
       } else {
